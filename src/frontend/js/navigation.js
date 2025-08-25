@@ -297,8 +297,19 @@ window.addEventListener('load', function() {
 // Export for global use
 window.NavigationManager = NavigationManager;
 
-// Add manual test function for debugging
+// Add manual test functions for debugging
+window.testHeaderNavigation = function() {
+    console.log('🧪 Manual header navigation test...');
+    NavigationManager.initializeHeaderNavigation();
+};
+
 window.testFooterNavigation = function() {
     console.log('🧪 Manual footer navigation test...');
+    NavigationManager.initializeFooterNavigation();
+};
+
+window.testAllNavigation = function() {
+    console.log('🧪 Manual navigation test for all elements...');
+    NavigationManager.initializeHeaderNavigation();
     NavigationManager.initializeFooterNavigation();
 };
