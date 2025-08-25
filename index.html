@@ -44,7 +44,10 @@
         await guestRouter.ensureGuestView();
 
         // Initialize footer navigation after guest view is loaded
-        NavigationManager.initializeFooterNavigation();
+        // Small delay to ensure DOM is fully rendered
+        setTimeout(() => {
+          NavigationManager.initializeFooterNavigation();
+        }, 100);
 
         console.log('🎉 Tournament Management System ready!');
 
