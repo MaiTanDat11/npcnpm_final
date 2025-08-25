@@ -150,11 +150,37 @@ export class NavigationManager {
      * Initialize footer navigation for info items
      */
     static initializeFooterNavigation() {
-        // Find all footer info items and add click handlers
-        const footerInfoItems = document.querySelectorAll('.footer-section.info .info-item');
+        console.log('🔗 Initializing footer navigation...');
 
-        footerInfoItems.forEach(item => {
+        // Try multiple selectors to find footer info items
+        const selectors = [
+            '.footer-section.info .info-item',
+            '.info-item',
+            '.footer-section .info-item'
+        ];
+
+        let footerInfoItems = [];
+        for (const selector of selectors) {
+            footerInfoItems = document.querySelectorAll(selector);
+            if (footerInfoItems.length > 0) {
+                console.log(`✅ Found ${footerInfoItems.length} footer items with selector: ${selector}`);
+                break;
+            }
+        }
+
+        if (footerInfoItems.length === 0) {
+            console.log('⚠️ No footer info items found');
+            return;
+        }
+
+        footerInfoItems.forEach((item, index) => {
             const spanText = item.querySelector('span')?.textContent?.trim();
+            console.log(`🔗 Processing footer item ${index + 1}: "${spanText}"`);
+
+            if (!spanText) {
+                console.log(`⚠️ No span text found for item ${index + 1}`);
+                return;
+            }
 
             // Add cursor pointer style
             item.style.cursor = 'pointer';
@@ -172,23 +198,28 @@ export class NavigationManager {
             // Add click handler based on text content
             item.addEventListener('click', (e) => {
                 e.preventDefault();
+                console.log(`🖱️ Footer item clicked: "${spanText}"`);
 
                 switch(spanText) {
                     case 'Thông tin sử dụng':
+                        console.log('🔄 Navigating to usage-information.html');
                         window.location.href = 'usage-information.html';
                         break;
                     case 'Chính sách bảo mật':
+                        console.log('🔄 Navigating to privacy-policy.html');
                         window.location.href = 'privacy-policy.html';
                         break;
                     case 'Điều khoản sử dụng':
+                        console.log('🔄 Navigating to terms-of-use.html');
                         window.location.href = 'terms-of-use.html';
                         break;
                     default:
-                        // Log for debugging but don't break functionality
-                        console.log('Unknown footer item:', spanText);
+                        console.log('❓ Unknown footer item:', spanText);
                 }
             });
         });
+
+        console.log(`✅ Footer navigation initialized for ${footerInfoItems.length} items`);
     }
 }
 
