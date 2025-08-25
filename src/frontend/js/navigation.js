@@ -342,6 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
     NavigationManager.initializeHomeNavigation();
     NavigationManager.updateHomeLinks();
     NavigationManager.initializeHeaderNavigation();
+    NavigationManager.initializeLogoNavigation();
     NavigationManager.initializeFooterNavigation();
 });
 
@@ -350,6 +351,7 @@ window.addEventListener('load', function() {
     NavigationManager.initializeHomeNavigation();
     NavigationManager.updateHomeLinks();
     NavigationManager.initializeHeaderNavigation();
+    NavigationManager.initializeLogoNavigation();
     NavigationManager.initializeFooterNavigation();
 });
 
