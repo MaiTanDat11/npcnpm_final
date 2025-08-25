@@ -195,12 +195,14 @@ export class NavigationManager {
 document.addEventListener('DOMContentLoaded', function() {
     NavigationManager.initializeHomeNavigation();
     NavigationManager.updateHomeLinks();
+    NavigationManager.initializeFooterNavigation();
 });
 
 // Also initialize when the page is fully loaded (for dynamic content)
 window.addEventListener('load', function() {
     NavigationManager.initializeHomeNavigation();
     NavigationManager.updateHomeLinks();
+    NavigationManager.initializeFooterNavigation();
 });
 
 // Export for global use
