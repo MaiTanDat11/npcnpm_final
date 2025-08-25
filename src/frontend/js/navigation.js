@@ -147,6 +147,61 @@ export class NavigationManager {
     }
 
     /**
+     * Initialize header navigation for nav items
+     */
+    static initializeHeaderNavigation() {
+        console.log('🔗 Initializing header navigation...');
+
+        // Find all nav-item elements
+        const navItems = document.querySelectorAll('.nav-item');
+        console.log(`✅ Found ${navItems.length} nav items`);
+
+        navItems.forEach((item, index) => {
+            const spanText = item.querySelector('.nav-text, span')?.textContent?.trim();
+            console.log(`🔗 Processing nav item ${index + 1}: "${spanText}"`);
+
+            if (!spanText) {
+                console.log(`⚠️ No span text found for nav item ${index + 1}`);
+                return;
+            }
+
+            // Add cursor pointer style
+            item.style.cursor = 'pointer';
+            item.style.transition = 'opacity 0.2s ease';
+
+            // Add hover effect
+            item.addEventListener('mouseenter', () => {
+                item.style.opacity = '0.7';
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.style.opacity = '1';
+            });
+
+            // Add click handler based on text content
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log(`🖱️ Nav item clicked: "${spanText}"`);
+
+                switch(spanText) {
+                    case 'Hỗ trợ':
+                        console.log('🔄 Navigating to support.html');
+                        window.location.href = 'support.html';
+                        break;
+                    case 'Thông tin':
+                        console.log('🔄 Navigating to usage-information.html');
+                        window.location.href = 'usage-information.html';
+                        break;
+                    default:
+                        console.log('❓ Unknown nav item:', spanText);
+                }
+            });
+        });
+
+        console.log(`✅ Header navigation initialized for ${navItems.length} items`);
+    }
+
+    /**
      * Initialize footer navigation for info items
      */
     static initializeFooterNavigation() {
