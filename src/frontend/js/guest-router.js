@@ -19,6 +19,12 @@ class GuestRouter {
         console.log('🏠 Rendering guest view with login/register buttons');
         await renderGuestView();
         this.setupAuthenticationButtons();
+
+        // Initialize footer navigation after guest view is rendered
+        setTimeout(() => {
+            NavigationManager.initializeFooterNavigation();
+        }, 100);
+
         this.isInitialized = true;
     }
 
