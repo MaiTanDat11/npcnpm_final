@@ -184,6 +184,7 @@ export class NavigationManager {
                         window.location.href = 'terms-of-use.html';
                         break;
                     default:
+                        // Log for debugging but don't break functionality
                         console.log('Unknown footer item:', spanText);
                 }
             });
