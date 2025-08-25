@@ -43,6 +43,9 @@
         // Always start in guest mode for clean initialization
         await guestRouter.ensureGuestView();
 
+        // Initialize footer navigation after guest view is loaded
+        NavigationManager.initializeFooterNavigation();
+
         console.log('🎉 Tournament Management System ready!');
 
       } catch (error) {
