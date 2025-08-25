@@ -138,12 +138,56 @@ export class NavigationManager {
      */
     static redirectUnauthorized() {
         const currentUser = TokenManager.getCurrentUser();
-        
+
         if (!currentUser || !TokenManager.isAuthenticated()) {
             window.location.href = 'login.html';
         } else {
             this.goHome();
         }
+    }
+
+    /**
+     * Initialize footer navigation for info items
+     */
+    static initializeFooterNavigation() {
+        // Find all footer info items and add click handlers
+        const footerInfoItems = document.querySelectorAll('.footer-section.info .info-item');
+
+        footerInfoItems.forEach(item => {
+            const spanText = item.querySelector('span')?.textContent?.trim();
+
+            // Add cursor pointer style
+            item.style.cursor = 'pointer';
+            item.style.transition = 'opacity 0.2s ease';
+
+            // Add hover effect
+            item.addEventListener('mouseenter', () => {
+                item.style.opacity = '0.7';
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.style.opacity = '1';
+            });
+
+            // Add click handler based on text content
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                switch(spanText) {
+                    case 'Thông tin sử dụng':
+                        window.location.href = 'usage-information.html';
+                        break;
+                    case 'Chính sách bảo mật':
+                        window.location.href = 'privacy-policy.html';
+                        break;
+                    case 'Điều khoản sử dụng':
+                        window.location.href = 'terms-of-use.html';
+                        break;
+                    default:
+                        console.log('Unknown footer item:', spanText);
+                }
+            });
+        });
     }
 }
 
