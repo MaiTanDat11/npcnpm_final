@@ -23,6 +23,7 @@ class GuestRouter {
         // Initialize navigation after guest view is rendered
         setTimeout(() => {
             NavigationManager.initializeHeaderNavigation();
+            NavigationManager.initializeLogoNavigation();
             NavigationManager.initializeFooterNavigation();
         }, 100);
 
