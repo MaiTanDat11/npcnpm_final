@@ -239,3 +239,9 @@ window.addEventListener('load', function() {
 
 // Export for global use
 window.NavigationManager = NavigationManager;
+
+// Add manual test function for debugging
+window.testFooterNavigation = function() {
+    console.log('🧪 Manual footer navigation test...');
+    NavigationManager.initializeFooterNavigation();
+};
