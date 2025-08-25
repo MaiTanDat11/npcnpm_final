@@ -364,6 +364,11 @@ window.testHeaderNavigation = function() {
     NavigationManager.initializeHeaderNavigation();
 };
 
+window.testLogoNavigation = function() {
+    console.log('🧪 Manual logo navigation test...');
+    NavigationManager.initializeLogoNavigation();
+};
+
 window.testFooterNavigation = function() {
     console.log('🧪 Manual footer navigation test...');
     NavigationManager.initializeFooterNavigation();
@@ -372,5 +377,6 @@ window.testFooterNavigation = function() {
 window.testAllNavigation = function() {
     console.log('🧪 Manual navigation test for all elements...');
     NavigationManager.initializeHeaderNavigation();
+    NavigationManager.initializeLogoNavigation();
     NavigationManager.initializeFooterNavigation();
 };
