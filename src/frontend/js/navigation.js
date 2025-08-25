@@ -202,6 +202,65 @@ export class NavigationManager {
     }
 
     /**
+     * Initialize logo navigation
+     */
+    static initializeLogoNavigation() {
+        console.log('🏷️ Initializing logo navigation...');
+
+        // Find all potential logo elements
+        const logoSelectors = [
+            '.footer-thumbnail',
+            '.footer-logo-placeholder',
+            '.logo',
+            '.brand-logo',
+            '.footer-thumbnail img',
+            '.footer-section.preview .footer-thumbnail'
+        ];
+
+        let logoElements = [];
+        for (const selector of logoSelectors) {
+            const elements = document.querySelectorAll(selector);
+            if (elements.length > 0) {
+                logoElements = [...logoElements, ...elements];
+                console.log(`✅ Found ${elements.length} logo elements with selector: ${selector}`);
+            }
+        }
+
+        if (logoElements.length === 0) {
+            console.log('⚠️ No logo elements found');
+            return;
+        }
+
+        logoElements.forEach((logo, index) => {
+            console.log(`🏷️ Processing logo element ${index + 1}`);
+
+            // Add cursor pointer style
+            logo.style.cursor = 'pointer';
+            logo.style.transition = 'all 0.3s ease';
+
+            // Add hover effect
+            logo.addEventListener('mouseenter', () => {
+                logo.style.transform = 'scale(1.05)';
+                logo.style.opacity = '0.8';
+            });
+
+            logo.addEventListener('mouseleave', () => {
+                logo.style.transform = 'scale(1)';
+                logo.style.opacity = '1';
+            });
+
+            // Add click handler
+            logo.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('🖱️ Logo clicked - navigating to team members page');
+                window.location.href = 'team-members.html';
+            });
+        });
+
+        console.log(`✅ Logo navigation initialized for ${logoElements.length} elements`);
+    }
+
+    /**
      * Initialize footer navigation for info items
      */
     static initializeFooterNavigation() {
