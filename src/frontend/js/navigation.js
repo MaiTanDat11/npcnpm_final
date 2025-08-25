@@ -282,6 +282,7 @@ export class NavigationManager {
 document.addEventListener('DOMContentLoaded', function() {
     NavigationManager.initializeHomeNavigation();
     NavigationManager.updateHomeLinks();
+    NavigationManager.initializeHeaderNavigation();
     NavigationManager.initializeFooterNavigation();
 });
 
@@ -289,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', function() {
     NavigationManager.initializeHomeNavigation();
     NavigationManager.updateHomeLinks();
+    NavigationManager.initializeHeaderNavigation();
     NavigationManager.initializeFooterNavigation();
 });
 
