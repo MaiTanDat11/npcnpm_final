@@ -20,8 +20,9 @@ class GuestRouter {
         await renderGuestView();
         this.setupAuthenticationButtons();
 
-        // Initialize footer navigation after guest view is rendered
+        // Initialize navigation after guest view is rendered
         setTimeout(() => {
+            NavigationManager.initializeHeaderNavigation();
             NavigationManager.initializeFooterNavigation();
         }, 100);
 
