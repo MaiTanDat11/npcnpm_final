@@ -1,7 +1,7 @@
 /**
  * Navigation utility for role-based routing
  */
-import { TokenManager } from './api.js';
+import { TokenManager } from './hybrid-api.js';
 
 export class NavigationManager {
     /**
