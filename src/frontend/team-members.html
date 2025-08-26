@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thành viên nhóm - Tournament Manager</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/styles/base.css" />
+  <link rel="stylesheet" href="../assets/styles/theme.css" />
+  <link rel="stylesheet" href="../assets/styles/components.css" />
+  <link rel="stylesheet" href="../assets/styles/layout.css" />
+  <style>
+    .team-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1E1E1E 0%, #383535 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 24px;
+    }
+
+    .team-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .team-title {
+      color: #F3F3F3;
+      font-family: Orbitron, monospace;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background: linear-gradient(45deg, #F19EDC, #9B59B6, #3498DB);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .team-subtitle {
+      color: #D9D9D9;
+      font-family: Inter, sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .project-name {
+      color: #F19EDC;
+      font-family: Montserrat, sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .member-card {
+      background: rgba(243, 243, 243, 0.95);
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: translateY(0);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .member-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(241, 158, 220, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(241, 158, 220, 0.4);
+    }
+
+    .member-card:hover::before {
+      left: 100%;
+    }
+
+    .member-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F19EDC, #9B59B6);
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Orbitron, monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 10px 30px rgba(241, 158, 220, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .member-avatar::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(45deg);
+      animation: shine 2s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+      100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    }
+
+    .member-name {
+      color: #1E1E1E;
+      font-family: Montserrat, sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .member-role {
+      color: #666;
+      font-family: Inter, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .member-id {
+      background: linear-gradient(135deg, #F19EDC, #9B59B6);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-family: Orbitron, monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      display: inline-block;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      background: rgba(241, 158, 220, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      color: white;
+      cursor: pointer;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .back-button:hover {
+      background: rgba(241, 158, 220, 1);
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(241, 158, 220, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .team-page {
+        padding: 60px 20px;
+      }
+      
+      .team-title {
+        font-size: 32px;
+      }
+      
+      .team-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .member-card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="team-page">
+    <button class="back-button" onclick="window.history.back()" title="Quay lại">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div class="team-header">
+      <h1 class="team-title">Thành Viên Nhóm</h1>
+      <p class="team-subtitle">Đội ngũ phát triển</p>
+      <p class="project-name">Tournament Manager</p>
+    </div>
+
+    <div class="team-container">
+      <div class="member-card">
+        <div class="member-avatar">TMK</div>
+        <h3 class="member-name">Thái Minh Khoa</h3>
+        <p class="member-role">Full-stack Developer</p>
+        <span class="member-id">MEMBER #001</span>
+      </div>
+
+      <div class="member-card">
+        <div class="member-avatar">MTĐ</div>
+        <h3 class="member-name">Mai Tấn Đạt</h3>
+        <p class="member-role">Frontend Developer</p>
+        <span class="member-id">MEMBER #002</span>
+      </div>
+
+      <div class="member-card">
+        <div class="member-avatar">LBT</div>
+        <h3 class="member-name">Lương Bá Hoàng Tú</h3>
+        <p class="member-role">Backend Developer</p>
+        <span class="member-id">MEMBER #003</span>
+      </div>
+
+      <div class="member-card">
+        <div class="member-avatar">NXT</div>
+        <h3 class="member-name">Nguyễn Xuân Tùng</h3>
+        <p class="member-role">UI/UX Designer</p>
+        <span class="member-id">MEMBER #004</span>
+      </div>
+
+      <div class="member-card">
+        <div class="member-avatar">NTL</div>
+        <h3 class="member-name">Nguyễn Thành Lợi</h3>
+        <p class="member-role">Database Administrator</p>
+        <span class="member-id">MEMBER #005</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Script -->
+  <script type="module" src="./js/navigation.js"></script>
+</body>
+</html>

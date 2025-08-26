@@ -192,7 +192,20 @@ class AuthController {
 
     // Get current user
     getCurrentUser() {
-        return this.currentUser;
+        // If we have currentUser in memory, return it
+        if (this.currentUser) {
+            return this.currentUser;
+        }
+
+        // If not, try to get user from token
+        const userFromToken = TokenManager.getCurrentUser();
+        if (userFromToken) {
+            // Update our in-memory currentUser
+            this.currentUser = userFromToken;
+            return userFromToken;
+        }
+
+        return null;
     }
 
     // Redirect after authentication based on user role

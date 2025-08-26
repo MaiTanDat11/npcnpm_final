@@ -237,7 +237,15 @@ export async function renderGuestView() {
             </div>
           </div>
           <div class="footer-section preview">
-            <div class="footer-thumbnail"></div>
+            <div class="footer-thumbnail" title="Click để xem thành viên nhóm">
+              <div class="logo-placeholder">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <circle cx="20" cy="20" r="18" stroke="#F19EDC" stroke-width="2"/>
+                  <text x="20" y="26" text-anchor="middle" fill="#F19EDC" font-family="Orbitron" font-size="12" font-weight="600">TM</text>
+                </svg>
+                <span style="color: #F19EDC; font-size: 12px; font-weight: 600; margin-top: 8px; display: block;">Team</span>
+              </div>
+            </div>
             <div class="footer-controls">
               <button class="footer-control-btn">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none">

@@ -1,6 +1,7 @@
 // Guest Router - Ensures consistent guest navigation with login/register buttons
 import { renderGuestView } from './views/guestView.js';
 import { TokenManager } from './hybrid-api.js';
+import { NavigationManager } from './navigation.js';
 
 class GuestRouter {
     constructor() {
@@ -18,6 +19,14 @@ class GuestRouter {
         console.log('🏠 Rendering guest view with login/register buttons');
         await renderGuestView();
         this.setupAuthenticationButtons();
+
+        // Initialize navigation after guest view is rendered
+        setTimeout(() => {
+            NavigationManager.initializeHeaderNavigation();
+            NavigationManager.initializeLogoNavigation();
+            NavigationManager.initializeFooterNavigation();
+        }, 100);
+
         this.isInitialized = true;
     }
 

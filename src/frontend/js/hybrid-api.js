@@ -107,11 +107,33 @@ class TokenManager {
     static getCurrentUser() {
         const token = this.getToken();
         if (!token) return null;
-        
+
         try {
-            return JSON.parse(atob(token));
+            // JWT tokens have 3 parts: header.payload.signature
+            const parts = token.split('.');
+            if (parts.length !== 3) {
+                throw new Error('Invalid JWT token format');
+            }
+
+            // Decode the payload (middle part)
+            const payload = JSON.parse(atob(parts[1]));
+
+            // Check if token is expired
+            if (payload.exp && Date.now() >= payload.exp * 1000) {
+                console.log('Token expired');
+                this.removeToken();
+                return null;
+            }
+
+            return {
+                _id: payload.id,
+                id: payload.id,
+                role: payload.role,
+                exp: payload.exp,
+                iat: payload.iat
+            };
         } catch (error) {
-            console.error('Invalid token:', error);
+            console.error('Error decoding token:', error);
             this.removeToken();
             return null;
         }

@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chính sách bảo mật - Tournament Manager</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Ensure fonts load properly */
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+  </style>
 
   <!-- CSS -->
   <link rel="stylesheet" href="../assets/styles/base.css" />
@@ -117,19 +127,27 @@
     }
 
     .content-text {
-      font-family: Inter, sans-serif;
+      font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 16px;
       line-height: 1.6;
       color: #1E1E1E;
       margin: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: "kern" 1, "liga" 1;
     }
 
     .content-text h2 {
       color: #1E1E1E;
-      font-family: Inter, sans-serif;
+      font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 24px;
       font-weight: 600;
       margin: 30px 0 15px 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: "kern" 1, "liga" 1;
     }
 
     .content-text h2:first-child {
@@ -370,7 +388,7 @@
           Trang chủ
         </a>
         <div class="search-container">
-          <input type="text" class="search-input" placeholder="Tìm ki���m">
+          <input type="text" class="search-input" placeholder="Tìm kiếm">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M12 4L4 12M4 4L12 12" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -442,7 +460,7 @@
             <li>Đào tạo nhân viên về bảo mật thông tin</li>
           </ul>
           
-          <h2>6. Quyền c���a người dùng</h2>
+          <h2>6. Quyền của người dùng</h2>
           <p>Bạn có các quyền sau đối với thông tin cá nhân của mình:</p>
           <ul>
             <li><strong>Quyền truy cập:</strong> Yêu cầu biết thông tin nào chúng tôi có về bạn</li>
@@ -458,7 +476,7 @@
           <ul>
             <li>Ghi nhớ thông tin đăng nhập và cài đặt của bạn</li>
             <li>Phân tích cách sử dụng website</li>
-            <li>Cải thiện hiệu suất và chức năng của trang web</li>
+            <li>Cải thiện hiệu suất và ch��c năng của trang web</li>
             <li>Cung cấp nội dung được cá nhân hóa</li>
           </ul>
           <p>Bạn có thể quản lý cài đặt cookies thông qua trình duyệt của mình.</p>
@@ -535,7 +553,7 @@
               <svg class="info-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
                 <path d="M20 26.6667V20M20 13.3334H20.0167M36.6667 20C36.6667 29.2048 29.2047 36.6667 20 36.6667C10.7952 36.6667 3.33333 29.2048 3.33333 20C3.33333 10.7953 10.7952 3.33337 20 3.33337C29.2047 3.33337 36.6667 10.7953 36.6667 20Z" stroke="#F3F3F3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Điều khoản sử d���ng</span>
+              <span>Điều khoản sử dụng</span>
             </a>
           </div>
         </div>
@@ -564,5 +582,8 @@
       </div>
     </footer>
   </div>
+
+  <!-- Scripts -->
+  <script type="module" src="./js/navigation.js"></script>
 </body>
 </html>

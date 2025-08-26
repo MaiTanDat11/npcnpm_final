@@ -107,7 +107,7 @@
             </svg>
           </button>
           <div class="news-container" id="newsContainer">
-            <div class="loading-placeholder">Đang tải tin tức...</div>
+            <div class="loading-placeholder">Đang tải tin t���c...</div>
           </div>
           <button class="carousel-btn next-btn" data-carousel-next="newsContainer">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -271,6 +271,7 @@
   <script type="module">
     import { apiCall, API_ENDPOINTS, TokenManager } from './js/hybrid-api.js';
     import { createCarousel } from './js/carousel.js';
+    import { NavigationManager } from './js/navigation.js';
     
     // Dashboard functionality
     document.addEventListener('DOMContentLoaded', function() {
